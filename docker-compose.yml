@@ -4,10 +4,10 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
-    #environment:
+    environment:
+      DOMAIN: https://privacypost.sccs.swarthmore.edu/
     #env_file:
     #  - .env
-      DOMAIN: https://privacypost.sccs.swarthmore.edu/
     deploy:
       labels:
         - "traefik.enable=true"
