@@ -1,0 +1,17 @@
+.blog-post{
+    /* width: 50vw; */
+    display: flex;
+    margin: 1% 25%;
+  }
+  .blog-post h1{
+    text-align: left;
+    width: 20%;
+  }
+
+  .blog-post p {
+    /* width: 50vw; */
+    background-color: rgba(100, 148, 237, 0.655);
+    border-radius: 8px;
+    width: 80%;
+    padding: 1%;
+  }

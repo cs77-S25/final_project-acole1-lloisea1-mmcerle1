@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+
+{% endblock %}
+
+{% block title %} 
+Register
+{% endblock %}
+
+{% block content %}
+<br><br>
+<form action="{{ url_for('register') }}" method="post">
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+    </div>
+    <br>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <br>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <br>
+    <div>
+        <button type="submit">Register</button>
+    </div>
+</form>
+<br>
+Already have an account? Login <a href="{{ url_for('login') }}" >here</a>.
+
+{% endblock %}

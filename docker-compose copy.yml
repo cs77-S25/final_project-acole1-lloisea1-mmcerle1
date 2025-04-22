@@ -1,0 +1,28 @@
+services:
+  privacypost:
+    image: registry.sccs.swarthmore.edu/cs77-s25/privacypost/privacypost:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+    #env_file:
+    #  - .env
+      DOMAIN: https://privacypost.sccs.swarthmore.edu/
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=traefik"
+        - "traefik.http.routers.privacypost.entrypoints=https"
+        - "traefik.http.routers.privacypost.rule=Host(`privacypost.sccs.swarthmore.edu`)"
+        - "traefik.http.routers.privacypost.tls=true"
+        - "traefik.http.routers.privacypost.tls.certresolver=letsEncrypt"
+        - "traefik.http.services.privacypost.loadbalancer.server.port=6000"
+    networks:
+      - internal
+      - traefik
+
+networks:
+  internal:
+
+  traefik:
+    external: true

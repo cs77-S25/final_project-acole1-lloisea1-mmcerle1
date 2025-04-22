@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %} Home {% endblock %}
+
+{% block head %}
+    {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+{% endblock %}
+
+{%block content %}
+    <div class = "intro">
+        <h1>Privacy Post: <br> Your Privacy Questions Answered.</h1>
+        <p>Welcome to Privacy Post! We hope this collection of Forums, Resource Docs, and Developer Blogposts can help you on your internet privacy journey. Have a question? Feel free to post in the relevant forums. Looking for next steps to take to protect your privacy? Take a look at our curated selection of help docs! </p>
+        
+    </div>
+    <div class = "blog-posts">
+        <div class = "how-to">
+            <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
+        </div>
+        <div class = "recent-posts">
+            <h2>Recent Blog Posts!</h2>
+            <div class="container">
+                <div class="carousel-view">
+                  <button id="prev-btn" class="prev-btn">
+                   <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+                <path d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z" />
+              </svg>
+                  </button>
+                  <div id="item-list" class="item-list">
+                        <figure >
+                            <img id="item" class="item" src="{{ url_for('static', filename='images/footprint.png') }}"/>
+                            <figcaption> 
+                                <a href= "{{ url_for('blog_post') }}">Search Engine Privacy</a>
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img id="item" class="item" src="{{ url_for('static', filename='images/shield.png') }}"/>
+                            <figcaption> An Intro to VPNs</figcaption>
+                        </figure>
+                        <figure>
+                            <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
+                            <figcaption> Blog post #3</figcaption>
+                        </figure>
+                        <figure>
+                            <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
+                            <figcaption> Blog post #4</figcaption>
+                        </figure>
+                      </div>
+                  <button id="next-btn" class="next-btn">
+                        <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+                <path d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z" />
+              </svg>
+                      </button>
+                  </div>
+            </div>
+        </div>
+    </div>
+   
+      
+      
+    
+    <script src="{{ url_for('static', filename='js/blog.js') }}" defer></script>
+    
+
+{% endblock %}

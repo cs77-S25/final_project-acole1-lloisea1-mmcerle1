@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} Blog Post {% endblock %}
+{% block content %}
+
+{% block head %}
+    {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_post.css') }}">
+{% endblock %}
+
+<div class= "blog-post">
+    <h1>How to Use Privacy Post</h1>
+    <p>Tips & Tricks:<br>
+        <br>1. The “exit” button in the top right corner of all pages is an “instant exit button.” Viewing content that might result in exposing a part of your identity that you may not want others in your space to know about: just use the instant exit button to quickly move off the page. 
+        <br><br>2. If there is not a forum that currently addresses your privacy needs or concerns, do not hesitate to post your own forum question!
+        <br><br>3. Visit our resources page for more general information and a collection of privacy help docs!
+        </p>
+</div>
+
+{% endblock %}

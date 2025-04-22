@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Forum {% endblock %}
+{% block head %}
+    {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/forum.css') }}">
+<script src="{{ url_for('static', filename='js/forum.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+  <div class = "recent-forum-posts">
+    <p> 
+      <h2>Recent Forum Posts</h2>
+      </p>
+  </div>
+
+  <!-- Threads -->
+  <div class="posts">
+    {% for post in posts %}
+      <div class = "post">
+        <a href="{{ url_for('forum_item', post_id=post.id) }}">
+          <div class = "topic">
+            <p>{{ post.title }}<br>{{ post.author }}</p>
+          </div>
+          <div class = "likes">
+            <p>&#128077; {{ post.likes }}</p>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+
+  <!-- Need to make an actual button to get new topics -->
+  <div class = "post-search">
+    <div class = "new-post">
+      <p>Don't have what you're looking for?</p>
+      <button class = "btn-btn-secondary"><a href= "{{ url_for('make_forum_post') }}">New Post</a></button>
+    </div>
+
+    <div class = "search">
+      <p>
+        Looking for something specific?
+      </p>
+      <p>
+      <input class= "search-box" type="text" placeholder="Search..">
+    </p>
+    </div>
+  </div>
+
+{% endblock %}

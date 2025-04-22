@@ -1,0 +1,30 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 3% 25% 0%;
+  }
+  
+  .post {
+    height: 100px;
+    background: rgba(100, 148, 237, 0.655);
+    border-radius: 8px;
+  }
+
+  .post a{
+    color: black;
+  }
+
+  .post p:hover,a:hover{
+    color: rgba(130, 148, 170, 0.655);
+  }
+
+
+  .post p{
+      text-align: center;
+      padding-left: 0;
+      font-size: 25px;
+    color: black;
+    
+  }
+

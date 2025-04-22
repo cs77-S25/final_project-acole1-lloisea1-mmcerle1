@@ -1,0 +1,140 @@
+/*For nav bar*/
+
+.primary-navigation {
+  margin: 0 auto;
+  display: block;
+
+  padding: 0px 0 0 0;  
+  text-align: center;
+  font-size: 20px;
+}
+  
+ul li {
+  list-style: none;
+  margin: 0 auto;
+  border-left: 2px solid #6798bd;
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  font-family: arvo;
+}
+
+li a {
+  color: black;
+}
+
+li a:hover {
+  color: #6798bd;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding-left: 0;
+  left: 0;
+  display: none;
+  background: white;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px #ccc;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border-style: none;
+}
+
+ul li ul li a:hover {
+  padding-left: 10px;
+  border-left: 2px solid #6798bd;
+  transition: all 0.3s ease;
+}
+  
+a:hover {
+    text-decoration: none;
+    color: #6798bd;
+}
+  
+ul li ul li a { transition: all 0.5s ease; }
+
+.dropdown{
+  font-size: 15px;
+}
+
+/* css for main page*/
+
+h2 {
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  padding-left: 15%
+}
+
+p {
+  padding-left: 15%
+}
+
+h3 {
+  padding-left: 15%
+}
+
+/*buttons*/
+
+.btn-btn-secondary {
+  background-color:  #6798bd;
+  width: 180px;
+  display: block;
+  margin: 0px auto;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+  color: white;
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.search {
+  margin-top: 5%;
+}
+
+
+#footer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  width: max-content;
+  height: min-content;
+  color: rgba(0, 0, 0, 0.522);
+  margin: 0 auto;
+}

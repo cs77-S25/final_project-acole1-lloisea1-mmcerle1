@@ -1,0 +1,38 @@
+form {
+    height: 200px;
+    width: 400px;
+    margin: 5% 40% 0% 40%
+  }
+  
+  input {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 400px;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    color: rgb(0, 0, 0);
+  }
+  
+  .btn-btn-secondary {
+    background-color:  #6798bd;
+    width: 180px;
+    display: block;
+    margin: 0px auto;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
+    color: white;
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }

@@ -1,0 +1,22 @@
+name: Mirror
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: action-pack/gitlab-sync@v3
+        with:
+          # GitLab repo URL
+          url: https://gitlab.sccs.swarthmore.edu/cs77-s25/privacypost.git
+          # GitLab username
+          username: mirrorbot
+          # GitLab token
+          token: ${{ secrets.GITLAB_TOKEN }}
