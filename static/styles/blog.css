@@ -1,30 +1,36 @@
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin: 3% 25% 0%;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 1% 25% 3%;
+}
+
+.post {
+  min-height: fit-content;
+  background: rgba(100, 148, 237, 0.655);
+  border-radius: 8px;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.post a{
+  color: black;
+}
+
+.post p:hover,a:hover{
+  color: rgba(130, 148, 170, 0.655);
+}
+
+
+.post p{
+    text-align: center;
+    padding-left: 0;
+    font-size: 25px;
+  color: black;
   
-  .post {
-    height: 100px;
-    background: rgba(100, 148, 237, 0.655);
-    border-radius: 8px;
-  }
+}
 
-  .post a{
-    color: black;
-  }
-
-  .post p:hover,a:hover{
-    color: rgba(130, 148, 170, 0.655);
-  }
-
-
-  .post p{
-      text-align: center;
-      padding-left: 0;
-      font-size: 25px;
-    color: black;
-    
-  }
-
+h3 {
+  text-align: center;
+  padding-left: 0;
+}
