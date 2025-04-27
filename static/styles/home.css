@@ -103,14 +103,17 @@ a {
 .blog-posts{
   display: flex;
   margin: 5% 10%;
+  min-width: fit-content;
 }
 
 .how-to{
-  margin: 4% 10% 1%;
-  width: 40%
+  margin: 0% 10% 0% 10%;
+  width: 30%;
+  min-width: max-content;
+  height: 200px;
+  text-align: center;
 }
 
 .recent-posts{
-  width: 60%
+  width: 50%
 }
-
