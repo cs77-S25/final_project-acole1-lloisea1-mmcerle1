@@ -1,26 +1,39 @@
-// btn = document.getElementById('comment_btn');
-// btn.addEventListener("click", handleMessage);
+likePost = document.getElementById('like');
+likePost.addEventListener("click", function (event){
+    event.preventDefault(); 
+    console.log("in increase upvote");
+    console.log(window.location.href);
+    index = window.location.href.split("/");
+    console.log(index);
+    post_id = JSON.stringify(index[index.length-1]);
+    console.log(post_id);
+    fetch('/forum_item/like', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: post_id 
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Success:", data);
+        window.location.reload();
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+});
 
-// function handleMessage(){
-//     const inputField = document.getElementById("inputted_comment");
-//     const message = inputField.value.trim();
-//     if(message === ""){
-//         return;
-//     }
-//     else{
-//         const comments = document.getElementById("comments")
-//         const userComment = document.createElement("div");
-//         userComment.className = "comment";
-//         userComment.innerText = message;
-//         comments.appendChild(userComment);
-//     }
-// }
 
 
 document.querySelector("#comment_form").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
 
-    let content = document.getElementById("inputted_comment").value.trim();
+    let inputted_comment = document.getElementById("inputted_comment");
+    let content = inputted_comment.value.trim();
+    inputted_comment.value = "";
+
     if(content === ""){
         return;
     }
@@ -39,7 +52,7 @@ document.querySelector("#comment_form").addEventListener("submit", function (eve
     .then(response => response.json()) // Adjust based on expected response
     .then(data => {
         window.location.reload();
-        // console.log("Success:", data);
+        console.log("Success:", data);
         // comment = data["comment"];
 
         // // if (relevant === "false") {window.location.href="/notrelevanterror";}
@@ -51,6 +64,7 @@ document.querySelector("#comment_form").addEventListener("submit", function (eve
         // comments.appendChild(userComment);
     })
     .catch(error => {
+        console.log(response);
         console.error("Error:", error);
     });
 });
