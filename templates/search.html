@@ -10,4 +10,18 @@
 
 <input type="text" placeholder="Search..">
 
+{% for post in posts %}
+    <div class = "post">
+    <a href="{{ url_for('', post_id=post.id) }}">
+        <div class = "topic">
+        <p class = title >{{ post.title }}</p>
+        <p class = "author">{{ post.user.username }}</p>
+        </div>
+        <div class = "likes">
+        <p>&#128077; {{ post.likes }}</p>
+        </div>
+    </a>
+    </div>
+{% endfor %}
+
 {% endblock %}
