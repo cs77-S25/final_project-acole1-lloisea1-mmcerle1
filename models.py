@@ -10,6 +10,7 @@ class ForumPost(db.Model):
     comments = db.relationship('Comment', backref='forumpost', cascade="all, delete-orphan", lazy=True)
     likes = db.Column(db.Integer, default=0)
     author = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    topic = db.Column(db.Text, nullable=True)
 
     def __repr__(self) -> str:
         string = f"ID: {self.id}, Title: {self.title}, Content: {self.content}, Created_At: {self.created_at}, Comments: {self.comments}, Author: {self.author}"
@@ -18,8 +19,9 @@ class ForumPost(db.Model):
     def serialize(self):
         return {"id": self.id,\
                 "title": self.title,\
-                "author": self.author.username,\
+                "author": self.user.username,\
                 "likes": self.likes,\
+                "topic": self.topic,\
                 "content": self.content}
 
 
@@ -33,7 +35,7 @@ class Comment(db.Model):
 
     def serialize(self):
         return {"id": self.id,\
-                "author": self.author.username,\
+                "author": self.user.username,\
                 "likes": self.likes,\
                 "content": self.content}
 
