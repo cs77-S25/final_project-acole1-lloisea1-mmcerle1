@@ -2,10 +2,10 @@ from openai import OpenAI
 import requests
 import os
 
-with open('api_key.txt', 'r') as file:
-    openai_apikey = file.read().strip()
+#with open('api_key.txt', 'r') as file:
+#    openai_apikey = file.read().strip()
 
-os.environ['OPENAI_API_KEY'] = openai_apikey
+#os.environ['OPENAI_API_KEY'] = openai_apikey
 
 client = OpenAI()
  
