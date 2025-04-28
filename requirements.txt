@@ -5,3 +5,4 @@ sqlalchemy
 flask_sqlalchemy
 openai
 requests
+python-dotenv
