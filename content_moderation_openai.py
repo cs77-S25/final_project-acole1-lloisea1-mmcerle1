@@ -1,7 +1,8 @@
 from openai import OpenAI
 import requests
 import os
-
+from dotenv import load_dotenv
+load_dotenv()  # take environment variables
 #with open('api_key.txt', 'r') as file:
 #    openai_apikey = file.read().strip()
 
