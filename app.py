@@ -1,10 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, make_response, jsonify, session
+from flask import Flask, flash, render_template, request, redirect, url_for, make_response, jsonify, session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_cors import CORS
 from models import db, ForumPost, Comment, User
 from datetime import timedelta, datetime
 from flask_migrate import Migrate
+
+import content_moderation_openai as mod
+import time
 
 app = Flask(__name__)
 
@@ -100,19 +104,58 @@ def register():
     else:
         return redirect(url_for('home'))  # Redirect to the login page
 
+
 @app.route('/forum/')
 def forum():
-    # TODO make this load with tags!!!!! please please please
-    now = datetime.now()
-    posts = ForumPost.query.filter((now-ForumPost.created_at) < timedelta(days=7)).order_by(ForumPost.likes.desc()).all()
+    if  request.args:
+        
+        topic = request.args.get("t")
+        keyword = request.args.get("k")
+        
+        if keyword == "" and topic != "all":
+            posts = ForumPost.query.filter_by(topic=topic).order_by(ForumPost.likes.desc()).all()
+        elif keyword != "" and topic == "all":
+            posts = ForumPost.query.filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
+        elif keyword != "" and topic != "all":
+            posts = ForumPost.query.filter_by(topic=topic).filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
+        else:
+            now = datetime.now()
+            posts = ForumPost.query.filter((now-ForumPost.created_at) < timedelta(days=7)).order_by(ForumPost.likes.desc()).all()
+    else:
+        now = datetime.now()
+        posts = ForumPost.query.filter((now-ForumPost.created_at) < timedelta(days=7)).order_by(ForumPost.likes.desc()).all()
+
     return render_template('forum.html', posts=posts)
+
+
+# @app.route('/forum/search/')
+# def forum_search():
+#     topic = request.args.get("t")
+#     keyword = request.args.get("t")
+    
+#     if keyword == "":
+#         if topic == "all":
+#             return redirect(url_for("home.html"))
+#         posts = ForumPost.query.filter_by(topic=topic).order_by(ForumPost.likes.desc()).all()
+#     elif topic == "all":
+#         posts = ForumPost.query.filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
+#     else:
+#         posts = ForumPost.query.filter_by(topic=topic).filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
+
+#     return render_template('forum.html', posts=posts)
+
+
+# @app.route('/forum/<str:tag_id>')
+# def forum_tag(tag_id):
+#     posts = ForumPost.query.filter(tag=tag_id).order_by(ForumPost.likes.desc()).all()
+#     return render_template('forum.html', posts=posts)
 
 
 @app.route('/forum_item/<int:post_id>', methods=['GET', 'POST'])
 def forum_item(post_id):
     post = ForumPost.query.get_or_404(post_id) # returns a 404 error if get fails
     if request.method == 'GET':
-        comments = Comment.query.filter_by(forumpost_id=post_id).order_by(Comment.likes.desc()).all()
+        comments = Comment.query.filter_by(forumpost_id=post_id).order_by(Comment.created_at.desc()).all()
         # comments = post.comments
         return render_template('forum_item.html', post=post, comments=comments) # return the thread object
 
@@ -141,12 +184,26 @@ def make_forum_post():
 
         title = request.form.get('title')
         text = request.form.get('content')
+        flag = mod.moderate_text(text)
+        print(flag)
         author = session['user_id']
+        topic = None
 
-        if title and text:
-            new_post = ForumPost(title=title, content=text, author=author)
-            db.session.add(new_post)
-            db.session.commit()
+        if(flag == False):
+            if request.form.get('topic'):
+                topic = request.form.get('topic')
+
+            if title and text:
+                if topic:
+                    new_post = ForumPost(title=title, content=text, author=author, topic=topic)
+                else:
+                    new_post = ForumPost(title=title, content=text, author=author)
+                db.session.add(new_post)
+                db.session.commit()
+        else:
+            flash('Content blocked: Violates usage policies.')
+            print("error")
+            time.sleep(5)
 
         return redirect(url_for('forum')) # set variable 
 
@@ -177,11 +234,16 @@ def resources():
     return render_template('resources.html')
 
 
-@app.route('/search/')
-def search():
-    return render_template('search.html')
+@app.route('/forum_item/like', methods=['PUT'])
+def upvote():
+    print("in Like post!")
+    post_id = request.get_json()
+    post = db.session.query(ForumPost).filter_by(id = post_id).one_or_none()
+    post.likes += 1
+    db.session.commit()
+    print(post.likes)
+    return make_response(jsonify({"success": "true", "post":post.serialize()}), 400)
 
-    
 
 # @app.route('/new_thread', methods=['POST'])
 # def new_thread():
