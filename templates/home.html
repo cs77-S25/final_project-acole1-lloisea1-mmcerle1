@@ -14,7 +14,16 @@
     </div>
     <div class = "blog-posts">
         <div class = "how-to">
-            <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
+            <h2>How To Use Privacy Post</h2>
+            <a href="{{ url_for('blog_post_1') }}">
+                <figure >
+                    <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
+                    <figcaption> 
+                        <a href= "{{ url_for('blog_post') }}">Click here!</a>
+                    </figcaption>
+                </figure>
+            </a>
+            
         </div>
         <div class = "recent-posts">
             <h2>Recent Blog Posts!</h2>
@@ -27,10 +36,12 @@
                   </button>
                   <div id="item-list" class="item-list">
                         <figure >
-                            <img id="item" class="item" src="{{ url_for('static', filename='images/footprint.png') }}"/>
-                            <figcaption> 
-                                <a href= "{{ url_for('blog_post') }}">Search Engine Privacy</a>
-                            </figcaption>
+                            <a href="{{ url_for('blog_post') }}">
+                                <img id="item" class="item" src="{{ url_for('static', filename='images/footprint.png') }}"/>
+                                <figcaption> 
+                                    <a href= "{{ url_for('blog_post') }}">Search Engine Privacy</a>
+                                </figcaption>
+                            </a>
                         </figure>
                         <figure>
                             <img id="item" class="item" src="{{ url_for('static', filename='images/shield.png') }}"/>
@@ -38,11 +49,11 @@
                         </figure>
                         <figure>
                             <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
-                            <figcaption> Blog post #3</figcaption>
+                            <figcaption> Coming Soon...</figcaption>
                         </figure>
                         <figure>
                             <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
-                            <figcaption> Blog post #4</figcaption>
+                            <figcaption> Coming Soon...</figcaption>
                         </figure>
                       </div>
                   <button id="next-btn" class="next-btn">
