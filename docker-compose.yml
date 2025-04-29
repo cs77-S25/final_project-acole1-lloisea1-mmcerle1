@@ -8,6 +8,8 @@ services:
       DOMAIN: https://privacypost.sccs.swarthmore.edu/
     #env_file:
     #  - .env
+    volumes:
+       - privacypost-dbdata:/instance
     deploy:
       labels:
         - "traefik.enable=true"
@@ -20,6 +22,14 @@ services:
     networks:
       - internal
       - traefik
+
+volumes:
+  privacypost-dbdata:
+    name: privacypost-dbdata
+    driver_opts:
+      type: nfs
+      o: "nfsvers=4,addr=130.58.218.26,rw,nolock,soft"
+      device: ":/volumes/privacypost-dbdata"
 
 networks:
   internal:
