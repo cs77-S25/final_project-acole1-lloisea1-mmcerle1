@@ -11,6 +11,7 @@ load_dotenv()  # take environment variables
 client = OpenAI()
  
 def moderate_text(input_text):
+    openai_apikey = os.getenv("OPENAI_API_KEY")
     print("in moderate text")
     headers = {
         'Content-Type': 'application/json',
