@@ -19,6 +19,8 @@
         <ul class="dropdown">
             <li><a href="{{ url_for('blog_post_1') }}">How to Use Privacy Post</a></li>
             <li><a href="{{ url_for('blog_post') }}">Search Engine Privacy</a></li>
+            <li><a href="{{ url_for('blog_post_2') }}">An Intro to VPNs</a></li>
+            <li><a href="{{ url_for('blog_post_3') }}">Intro to Email Privacy</a></li>
         </ul>
         </li>
         <li><a href="{{ url_for('forum') }}">Forum</a>
@@ -56,12 +58,12 @@
     </nav>
     {% block content %}
     {% endblock %}
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2025 by Arden A. Cole, Lemuel L'Oiseau, and Morgan McErlean</a>.
-        {% endblock %}
+
     </div>
 </body>
-
+<div id="footer">
+    {% block footer %}
+    &copy; Copyright 2025 by Arden A. Cole, Lemuel L'Oiseau, and Morgan McErlean</a>.
+    {% endblock %}
 <script src="{{ url_for('static', filename='js/base.js') }}" defer></script>
 </html>
