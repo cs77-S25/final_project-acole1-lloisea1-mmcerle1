@@ -17,7 +17,7 @@
   color: black;
 }
 
-.post p:hover,a:hover{
+.post a:hover{
   color: rgba(130, 148, 170, 0.655);
 }
 
