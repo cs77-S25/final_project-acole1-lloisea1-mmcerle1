@@ -41,6 +41,10 @@
     height:fit-content;
     align-items: center;
 }
+.comments_and_make_comments p {
+    text-align: center;
+    padding-left: 0;
+}
 .comments{
     height: 50%;
     background-color: rgb(255, 255, 255);
@@ -64,7 +68,7 @@
 #comment_form {
     height:auto;
     width: 100%;
-    margin: 0% 5% 0%;
+    margin: 0% 5% 1%;
     position: relative;
     bottom: 0;
 }
