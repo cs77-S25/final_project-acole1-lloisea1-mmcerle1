@@ -16,11 +16,9 @@
         <div class = "how-to">
             <h2>How To Use Privacy Post</h2>
             <a href="{{ url_for('blog_post_1') }}">
-                <figure >
+                <figure class = "how-to-fig">
                     <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
-                    <figcaption> 
-                        <a href= "{{ url_for('blog_post') }}">Click here!</a>
-                    </figcaption>
+                    <figcaption> Click here! </figcaption>
                 </figure>
             </a>
             
@@ -38,18 +36,20 @@
                         <figure >
                             <a href="{{ url_for('blog_post') }}">
                                 <img id="item" class="item" src="{{ url_for('static', filename='images/footprint.png') }}"/>
-                                <figcaption> 
-                                    <a href= "{{ url_for('blog_post') }}">Search Engine Privacy</a>
-                                </figcaption>
+                                <figcaption> Search Engine Privacy</figcaption>
                             </a>
                         </figure>
                         <figure>
-                            <img id="item" class="item" src="{{ url_for('static', filename='images/shield.png') }}"/>
-                            <figcaption> An Intro to VPNs</figcaption>
+                            <a href="{{ url_for('blog_post_2') }}">
+                                <img id="item" class="item" src="{{ url_for('static', filename='images/shield.png') }}"/>
+                                <figcaption> An Intro to VPNs</figcaption>
+                            </a>
                         </figure>
                         <figure>
-                            <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
-                            <figcaption> Coming Soon...</figcaption>
+                            <a href="{{ url_for('blog_post_3') }}">
+                                <img id="item" class="item" src="{{ url_for('static', filename='images/mail.png') }}"/>
+                                <figcaption>Intro to Email Privacy</figcaption>
+                            </a>
                         </figure>
                         <figure>
                             <img id="item" class="item" src="{{ url_for('static', filename='images/pelican.png') }}"/>
