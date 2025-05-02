@@ -12,7 +12,7 @@
 
     <div class = "content">
         <h3>{{ post.title }}</h3>
-        <p class="author">Posted By:{{  post.user.username }}</p>
+        <p class="author">Posted By: {{  post.user.username }}</p>
         <p class = "post_content">{{ post.content }}</p>
         <p> {{ post.likes}}
             <button id = "like"> &#128077; </button>
@@ -20,21 +20,27 @@
     </div>
 
     <div class = "comments_and_make_comments">
+        {% if session['user_id'] %}
+            <p>Leave a comment here!</p>
+        {% else %}
+            <p>No comments</p>
+        {% endif %}
+
         <div id = "comments" class="comments">
             {% for comment in comments %}
                 <div id = "comment" class = "comment">
-                    <span>{{ comment.user.username }}:</span>
-                    <p>{{ comment.content }}</p>
+                    <p><strong>{{ comment.user.username }}</strong>: {{ comment.content }}</p>
                 </div>
             {% endfor %}
     
         </div>
-
+        {% if session['user_id'] %}
         <form id="comment_form">
             <textarea name="comment" id = "inputted_comment" class="form-control mb-2" placeholder="Comment..." required></textarea>
             <button type="submit" id = "comment_btn" class="btn-btn-secondary">Post Comment</button> 
             <!-- Remember to change back to submit type for button -->
         </form>
+        {% endif %}
 
     </div>
 
