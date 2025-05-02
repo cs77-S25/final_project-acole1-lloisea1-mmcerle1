@@ -1,5 +1,15 @@
 /*For nav bar*/
 
+body {
+  /* height: 100vw; */
+  margin: 0%;
+  width: 100vw;
+}
+
+html {
+  margin: 0%;
+  width: 100vw;
+}
 .primary-navigation {
   margin: 0 auto;
   display: block;
@@ -129,12 +139,10 @@ a {
 #footer {
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
-  left: 20%;
-  right: 20%;
-  width: max-content;
+  position: fixed;
+  bottom: 10px;
+  /* padding: 0% 20%; */
+  width: 100vw;
   height: min-content;
   color: rgba(0, 0, 0, 0.522);
-  margin: 0 auto;
 }
