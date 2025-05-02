@@ -1,5 +1,5 @@
 body {
-  margin: 0;
+  width: 100vw;
 }
 
 /* css for carousel*/
@@ -12,15 +12,7 @@ button{
   transition: all .3s ease-in-out;
 }
 
-.container {
-  /* width: 100%; */
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  /* margin: 1% 25% 0%; */
-}
+
 
 .carousel-view {
 display: flex;
@@ -28,10 +20,11 @@ display: flex;
 align-items: center;
 gap: 10px;
 transition: all 0.25s ease-in;
+max-width: 950px;
 }
 
 .carousel-view .item-list {
-max-width: 950px;
+/* max-width: 70%; */
 /* width: 70vw; */
 /* padding: 50px 10px; */
 display: flex;
@@ -40,7 +33,7 @@ scroll-behavior: smooth;
 transition: all 0.25s ease-in;
 -ms-overflow-style: none; /* IE and Edge */
 scrollbar-width: none; /* Firefox */
-overflow: auto;
+overflow: hidden;
 scroll-snap-type: x mandatory;
 }
 
@@ -102,18 +95,43 @@ a {
 
 .blog-posts{
   display: flex;
-  margin: 5% 10%;
-  min-width: fit-content;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 5% 0%;
+  padding: 0% 0%;
 }
 
 .how-to{
-  margin: 0% 10% 0% 10%;
-  width: 30%;
+  /* margin: 0% 10% 0% 10%; */
+  width: 25%;
   min-width: max-content;
-  height: 200px;
+  height: auto;
   text-align: center;
+  justify-content: center;
+  margin-left: 15vw;
+}
+
+.how-to-fig {
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 .recent-posts{
-  width: 50%
+  width: 65%;
+  justify-content: center;
+  text-align: center;
+  margin-right: 15vw;
 }
