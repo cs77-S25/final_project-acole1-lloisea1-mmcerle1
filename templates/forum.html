@@ -1,31 +1,28 @@
-{% extends "base.html" %}
-{% block title %} Forum {% endblock %}
-{% block head %}
-    {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/forum.css') }}">
+{% extends "base.html" %} {% block title %} Forum {% endblock %} {% block head
+%} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/forum.css') }}"
+/>
 <script src="{{ url_for('static', filename='js/forum.js') }}" defer></script>
-{% endblock %}
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="recent-forum-posts">
+  <h2>Forum Posts</h2>
+</div>
 
-  <div class = "recent-forum-posts">
-    <p> 
-      <h2>Forum Posts</h2>
-      </p>
-    </div>
+<div class="post-search">
+  <div class="new-post">
+    <p>Don't have what you're looking for?</p>
+    <button class="btn-btn-secondary">
+      <a href="{{ url_for('make_forum_post') }}">New Post</a>
+    </button>
+  </div>
 
-  <div class = "post-search">
-    <div class = "new-post">
-      <p>Don't have what you're looking for?</p>
-      <button class = "btn-btn-secondary"><a href= "{{ url_for('make_forum_post') }}">New Post</a></button>
-    </div>
-
-    <div class = "search">
-      <p>
-        Looking for something specific?
-      </p>
-      <p>
-      <input class= "search-box" type="text" placeholder="Search..">
+  <div class="search">
+    <p>Looking for something specific?</p>
+    <p>
+      <input class="search-box" type="text" placeholder="Search By Content..." />
       <select name="topic" id="topic">
         <option value="all" selected>All</option>
         <option value="general">General</option>
@@ -35,27 +32,27 @@
       </select>
       <button id="search-btn" class="btn-btn-secondary">Search</button>
     </p>
-    </div>
   </div>
+</div>
 
-  <!-- Threads -->
-  <div class="posts">
-    {% for post in posts %}
-      <div class = "post">
-        <a href="{{ url_for('forum_item', post_id=post.id) }}">
-          <div class = "topic">
-            <p class = title >{{ post.title }}</p>
-            <p class = "author">{{ post.user.username }}</p>
-            {% if post.topic %}
-              <p class="topic">{{ post.topic }}</p>
-            {% endif %}
-          </div>
-          <div class = "likes">
-            <p>&#128077; {{ post.likes }}</p>
-          </div>
-        </a>
+<!-- Threads -->
+<div class="posts">
+  {% for post in posts %}
+  <div class="post">
+    <a href="{{ url_for('forum_item', post_id=post.id) }}">
+      <div class="topic">
+        <p class="title">Title: {{ post.title }}</p>
+        <p class="author">Author: {{ post.user.username }}</p>
+        {% if post.topic %}
+        <p class="topic">Topic: {{ post.topic }}</p>
+        {% endif %}
       </div>
-    {% endfor %}
+      <div class="likes">
+        <p>&#128077; {{ post.likes }}</p>
+      </div>
+    </a>
   </div>
+  {% endfor %}
+</div>
 
 {% endblock %}
