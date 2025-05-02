@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block head %}
     {{ super() }}
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">
 {% endblock %}
 
 {% block title %} 
@@ -10,6 +10,7 @@ Login
 
 {% block content %}
 <br><br>
+<div class ="login-register">
 <form action="{{ url_for('login') }}" method="post">
     <div>
         <label for="username">Username:</label>
@@ -21,10 +22,11 @@ Login
         <input type="password" id="password" name="password" required>
     </div>
     <br>
-    <div>
-        <button type="submit">Login</button>
+    <div class = "btn">
+        <button class = "btn-btn-secondary" type="submit">Login</button>
     </div>
 </form>
 <br>
-Don't have an account? Register <a href="{{ url_for('register') }}" >here</a>.
+<p>Don't have an account? Register <a href="{{ url_for('register') }}">here</a>.</p>
+</div>
 {% endblock %}
