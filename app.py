@@ -128,29 +128,6 @@ def forum():
     return render_template('forum.html', posts=posts)
 
 
-# @app.route('/forum/search/')
-# def forum_search():
-#     topic = request.args.get("t")
-#     keyword = request.args.get("t")
-    
-#     if keyword == "":
-#         if topic == "all":
-#             return redirect(url_for("home.html"))
-#         posts = ForumPost.query.filter_by(topic=topic).order_by(ForumPost.likes.desc()).all()
-#     elif topic == "all":
-#         posts = ForumPost.query.filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
-#     else:
-#         posts = ForumPost.query.filter_by(topic=topic).filter(or_((ForumPost.title.contains(keyword)), (ForumPost.content.contains(keyword)))).order_by(ForumPost.likes.desc()).all()
-
-#     return render_template('forum.html', posts=posts)
-
-
-# @app.route('/forum/<str:tag_id>')
-# def forum_tag(tag_id):
-#     posts = ForumPost.query.filter(tag=tag_id).order_by(ForumPost.likes.desc()).all()
-#     return render_template('forum.html', posts=posts)
-
-
 @app.route('/forum_item/<int:post_id>', methods=['GET', 'POST'])
 def forum_item(post_id):
     post = ForumPost.query.get_or_404(post_id) # returns a 404 error if get fails
@@ -201,9 +178,9 @@ def make_forum_post():
                 db.session.add(new_post)
                 db.session.commit()
         else:
-            flash('Content blocked: Violates usage policies.')
+            flash('Content blocked: Violates usage policies. (Reload Page!)')
             print("error")
-            time.sleep(5)
+            return redirect(url_for('make_forum_post'))
 
         return redirect(url_for('forum')) # set variable 
 
@@ -228,6 +205,13 @@ def blog_post():
 def blog_post_1():
     return render_template('blog_post_1.html')
 
+@app.route('/blog_post_2/')
+def blog_post_2():
+    return render_template('blog_post_2.html')
+
+@app.route('/blog_post_3/')
+def blog_post_3():
+    return render_template('blog_post_3.html')
 
 @app.route('/resources/')
 def resources():
@@ -243,32 +227,6 @@ def upvote():
     db.session.commit()
     print(post.likes)
     return make_response(jsonify({"success": "true", "post":post.serialize()}), 400)
-
-
-# @app.route('/new_thread', methods=['POST'])
-# def new_thread():
-#     form = request.get_json()
-#     title = form["title"]
-#     content = form["content"]
-#     if title and content:
-#         new_thread = Thread(title=title, content=content)
-#         db.session.add(new_thread)
-#         db.session.commit()
-#         print(f"Added new thread: {new_thread.serialize()}")
-#         return make_response(jsonify({"success": "true", "thread": new_thread.serialize()}), 200) # return both JSON object and HTTP response status (200: OK)
-
-#     return make_response(jsonify({"success": "false"}), 400) # return both JSON object and HTTP response status (400: bad request)
-
-# @app.route('/comment/<int:thread_id>', methods=['POST'])
-# def comment(thread_id):
-#     thread = Thread.query.get_or_404(thread_id) # returns a 404 error if get fails
-#     comment_text = request.form.get('comment')
-#     if comment_text:
-#         new_comment = Comment(thread_id=thread.id, content=comment_text)
-#         db.session.add(new_comment)
-#         db.session.commit()
-
-#     return redirect(url_for('thread', thread_id=thread_id)) # set variable thread_id to be thread_id
 
 if __name__ == '__main__':
     app.run(debug=True)
