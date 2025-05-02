@@ -1,0 +1,24 @@
+.login-register{
+    background-color: rgba(100, 148, 237, 0.655);
+    display: grid;
+    align-items: center;
+    width: 20vw;
+    border-radius: 8px;
+    align-content: center;
+    margin: auto;
+    padding: 1%;
+}
+
+form{
+    margin: auto;
+}
+
+.btn{
+    margin: auto;
+    align-items: center;
+    width: min-content;
+}
+
+.login-register a{
+    text-decoration: underline;
+}
