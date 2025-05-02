@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Blog Post {% endblock %}
+{% block content %}
+
+{% block head %}
+    {{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_post.css') }}">
+{% endblock %}
+
+<div class= "blog-post">
+    <h1>Intro to Email Privacy</h1>
+    <p>
+        Email is an annoying necessity of life for pretty much anyone who does much of anything online. Unfortunately, it is also extremely insecure. My first advice is just to avoid using email as much as possible, especially for personal communications, but since this is unrealistic for a lot of people, there are a couple of things you can do to make email a little more private and secure:
+        <br><br>
+        The first thing is to look for email service providers and clients that support end-to-end-encryption. This is important for keeping the body of your emails private. Keep in mind, though, that because of how email is designed, important metadata about your emails can’t be encrypted, so an instant messaging service built with encryption in mind from the start is always going to be safer for sensitive or personal communication.
+        <br><br>
+        We constantly have to give out our emails for things like making online accounts, and using the same email address for everything can make you vulnerable to being tracked between these accounts, especially if an address gets leaked. This can  be dangerous for vulnerable individuals, and the inevitable spam emails are annoying for everyone. Email aliasing services allow you to easily create a bunch of email addresses (with silly names, if you like) that will forward to your real mailbox. This makes you harder to track, and by deactivating forwarding for particular aliases, you can limit marketing emails from random accounts you made years ago.
+    </p>
+</div>
+
+{% endblock %}
