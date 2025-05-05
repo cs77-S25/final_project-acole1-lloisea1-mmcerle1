@@ -33,8 +33,8 @@
 
 
         
-        <li><a href="{{ url_for('home') }}"><img class="logo" src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" width="20px" height="20px"></a>
-        <a href="{{ url_for('home') }}"> {% if session['user_id'] %} | {{ session['username'] }} {% endif %}</a>
+        <li><img class="logo" src="{{ url_for('static', filename='images/profile.png') }}" alt="Profile" width="20px" height="20px">
+         {% if session['user_id'] %} {{ session['username'] }} {% endif %}
 
             <ul>
                 </li>
