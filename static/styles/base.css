@@ -1,7 +1,6 @@
 /*For nav bar*/
 
 body {
-  /* height: 100vw; */
   margin: 0%;
   width: 100vw;
 }
@@ -19,7 +18,7 @@ html {
   font-size: 20px;
 }
   
-ul li {
+.primary-navigation li{
   list-style: none;
   margin: 0 auto;
   border-left: 2px solid #6798bd;
@@ -43,7 +42,7 @@ li:hover {
   cursor: pointer;
 }
 
-ul li ul {
+.primary-navigation li ul {
   visibility: hidden;
   opacity: 0;
   position: absolute;
@@ -64,7 +63,7 @@ ul li ul:hover {
   box-shadow: 0px 3px 5px -1px #ccc;
 }
 
-ul li ul li {
+.primary-navigation li ul li {
   clear: both;
   width: 100%;
   text-align: left;
@@ -141,7 +140,6 @@ a {
   justify-content: center;
   position: fixed;
   bottom: 10px;
-  /* padding: 0% 20%; */
   width: 100vw;
   height: min-content;
   color: rgba(0, 0, 0, 0.522);
