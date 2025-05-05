@@ -1,4 +1,7 @@
 search = document.getElementById('search-btn');
+
+// Search function: This function queries the database based off
+// of user selected search parameters (tags)
 search.addEventListener("click", function (event){
     event.preventDefault(); 
     console.log("in search");
