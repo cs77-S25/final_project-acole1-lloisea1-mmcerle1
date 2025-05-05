@@ -1,17 +1,83 @@
-.blog-post{
-    /* width: 50vw; */
-    display: flex;
-    margin: 1% 25%;
-  }
-  .blog-post h1{
-    text-align: left;
-    width: 20%;
-  }
+.blog-post {
+  display: flex;
+  margin: 1% 25%;
+  gap: 1%;
+}
+.blog-post h1 {
+  text-align: left;
+  width: 19%;
+  min-width: min-content;
+}
 
-  .blog-post p {
-    /* width: 50vw; */
-    background-color: rgba(100, 148, 237, 0.655);
-    border-radius: 8px;
-    width: 80%;
-    padding: 1%;
-  }
+
+.blog-post .content {
+  display: grid;
+  background-color: none;
+  width: 80%;
+  padding: 1%;
+  gap: 1%;
+ 
+}
+
+.blog-post .content p{
+  background-color: rgba(100, 148, 237, 0.655);;
+  padding: 1%;
+  border-radius: 8px;
+}
+.blog-post .content .nav-guide {
+  background-color: rgba(100, 148, 237, 0.655);
+  border-radius: 8px;
+  padding: 1%;
+  min-width: min-content;
+}
+
+.blog-post .content .tips {
+  background-color: rgba(100, 148, 237, 0.655);
+  border-radius: 8px;
+  padding: 1%;
+  min-width: min-content;
+}
+
+.blog-post .content .tips p{
+  background-color: none;
+  min-width: min-content;
+}
+
+.blog-post .content .tips h3 {
+  padding-left: 0%;
+  text-align: center;
+}
+
+
+.nav-guide ul {
+  background-color: none;
+  list-style-position: inside;
+  padding-left: 0;
+
+}
+.nav-guide ul:hover, li:hover {
+  cursor: text;
+}
+
+.nav-guide ul li {
+  margin-bottom: 1%;
+}
+
+
+.nav-guide ul li:nth-child(1)::marker {
+  content: url("/static/images/pelican_icon.png");
+  vertical-align: middle;
+
+}
+
+.nav-guide ul li:nth-last-child(2)::marker {
+  content: url("/static/images/profile_icon.png");
+  vertical-align: middle;
+  margin: 0;
+}
+
+.nav-guide ul li:last-child::marker {
+  content: url("/static/images/exit_icon.png");
+  vertical-align: middle;
+  margin: 0;
+}
