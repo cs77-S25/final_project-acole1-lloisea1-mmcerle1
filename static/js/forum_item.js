@@ -1,4 +1,7 @@
 likePost = document.getElementById('like');
+
+// Like post function; This function increments the like count on
+// a post
 likePost.addEventListener("click", function (event){
     event.preventDefault(); 
     console.log("in increase upvote");
@@ -26,7 +29,8 @@ likePost.addEventListener("click", function (event){
 });
 
 
-
+// Submit comment function: This function adds comments to a post. A new
+// item is added to the database
 document.querySelector("#comment_form").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent default form submission
 
@@ -53,15 +57,6 @@ document.querySelector("#comment_form").addEventListener("submit", function (eve
     .then(data => {
         window.location.reload();
         console.log("Success:", data);
-        // comment = data["comment"];
-
-        // // if (relevant === "false") {window.location.href="/notrelevanterror";}
-
-        // const comments = document.getElementById("comments")
-        // const userComment = document.createElement("div");
-        // userComment.className = "comment";
-        // userComment.innerText = comment[""];
-        // comments.appendChild(userComment);
     })
     .catch(error => {
         console.log(response);
