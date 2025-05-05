@@ -9,23 +9,8 @@ tbody td {
   /* 2. Animate the opacity on hover */
   opacity: 0.6;
 }
-/* tbody tr:hover td {
-  background-color: #6798bd73;
-  transition-delay: 0s, 0s;
-  opacity: 1;
-  font-size: 2em;
-} */
 
-/* td {
-  3. Scale the text using transform on hover 
-  transform-origin: center left;
-  transition-property: transform;
-  transition-duration: 0.4s;
-  transition-timing-function: ease-in-out;
-} */
-/* tr:hover td {
-  transform: scale(1.1);
-} */
+
 
 /* Codepen styling */
 * { box-sizing: border-box }
@@ -84,9 +69,7 @@ th, td {
   display: flex;
 
 }
-/* .topic p:hover,.topic a:hover{
-  color: rgba(106, 110, 116, 0.655);
-} */
+
 
 .topic {
   width: 70%;
@@ -166,5 +149,4 @@ th, td {
   width: max-content;
   height: min-content;
   color: rgba(0, 0, 0, 0.522);
-
 }
