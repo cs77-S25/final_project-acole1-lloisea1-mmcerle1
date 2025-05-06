@@ -1,19 +1,38 @@
-{% extends "base.html" %}
-{% block title %} Blog Post {% endblock %}
-{% block content %}
-
-{% block head %}
-    {{ super() }}
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/blog_post.css') }}">
+{% extends "base.html" %} {% block title %} Blog Post {% endblock %} {% block
+content %} {% block head %} {{ super() }}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/blog_post.css') }}"
+/>
 {% endblock %}
 
-<div class= "blog-post">
-    <h1>Search Engine Privacy</h1>
-    <p>As I was preparing to write this article, I performed a quick google search: “search engine privacy help doc.” I did so in an attempt to determine resources already available to the public and consolidate said resources, as well as to draw out main points I wished to emphasize in this article. The first result that appeared in my search was “Privacy & Terms” from www.policies.google.com.
-    <br><br>From DuckDuckGo, a search engine that is committed to protecting the privacy of searches, the first result was similar (a seeming advertisement for DuckDuckGo), but through some scrolling yielded some fruitful discoveries. 
-    <br><br>How does using a private search engine, like DuckDuckGo make a difference when it comes to the individual’s privacy concerns? Why for DuckDuckGo, does refreshing a search result yield different results than the first search? Why does this not happen when I Google something?
-    <br><br>This is a matter of search privacy. Prominent search engines like Google track every one of your searches. Moving away from search engines like Google is a first, but critical step in avoiding tracking on the internet. This tracking manifests in curated search algorithms based on prior data but has other various nefarious consequences. Switching from Google to search engines like DuckDuckGo provides an accessible way to avoid major companies tracking your searches and using that information gained for primarily purposes of advertising and monetizing your data.
+<div class="blog-post">
+  <h1>Search Engine Privacy</h1>
+  <div class="content">
+    <p>
+      As I was preparing to write this article, I performed a quick google
+      search: “search engine privacy help doc.” I did so in an attempt to
+      determine resources already available to the public and consolidate said
+      resources, as well as to draw out main points I wished to emphasize in
+      this article. The first result that appeared in my search was “Privacy &
+      Terms” from www.policies.google.com. <br /><br />From DuckDuckGo, a search
+      engine that is committed to protecting the privacy of searches, the first
+      result was similar (a seeming advertisement for DuckDuckGo), but through
+      some scrolling yielded some fruitful discoveries. <br /><br />How does
+      using a private search engine, like DuckDuckGo make a difference when it
+      comes to the individual’s privacy concerns? Why for DuckDuckGo, does
+      refreshing a search result yield different results than the first search?
+      Why does this not happen when I Google something? <br /><br />This is a
+      matter of search privacy. Prominent search engines like Google track every
+      one of your searches. Moving away from search engines like Google is a
+      first, but critical step in avoiding tracking on the internet. This
+      tracking manifests in curated search algorithms based on prior data but
+      has other various nefarious consequences. Switching from Google to search
+      engines like DuckDuckGo provides an accessible way to avoid major
+      companies tracking your searches and using that information gained for
+      primarily purposes of advertising and monetizing your data.
     </p>
+  </div>
 </div>
 
 {% endblock %}
