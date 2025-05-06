@@ -38,7 +38,7 @@
         <form id="comment_form">
             <textarea name="comment" id = "inputted_comment" class="form-control mb-2" placeholder="Comment..." required></textarea>
             <button type="submit" id = "comment_btn" class="btn-btn-secondary">Post Comment</button> 
-            <!-- Remember to change back to submit type for button -->
+
         </form>
         {% endif %}
 
@@ -50,7 +50,6 @@
     let id = "{{ post.id }}"
 </script>
 <script src="{{ url_for('static', filename='js/forum_item.js') }}" defer></script>
-
 
 
 {% endblock %}
