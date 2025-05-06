@@ -22,18 +22,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Enable CORS
 CORS(app)
 
-# Remove me in production
 def check_password(a,b):
-    # if check_password_hash(user.password, password):
-    if a == b:
+    if check_password_hash(a,b):
         return True
     else: 
         return False
 
-# Remove me in production
+
 def generate_password(a):
-    # return generate_password_hash(password, method='sha256')
-    return a
+    return generate_password_hash(a, method='scrypt')
+
 
 # Initialize db to be used with current Flask app
 with app.app_context():
@@ -71,8 +69,9 @@ def login():
                 session.permanent = True
                 return redirect(url_for('home'))  # Redirect to homepage
             else:
-                error = "your username or password do not match."
-                return render_template('error.html', error=error) # Display error page
+                error = True
+                error_message = "Your username or password do not match."
+                return render_template('login.html', error=error, error_message= error_message) # Display error page
         
         else:
             return render_template('login.html')  # Render the login template
@@ -128,6 +127,8 @@ def forum():
     return render_template('forum.html', posts=posts)
 
 
+
+
 @app.route('/forum_item/<int:post_id>', methods=['GET', 'POST'])
 def forum_item(post_id):
     post = ForumPost.query.get_or_404(post_id) # returns a 404 error if get fails
@@ -178,9 +179,8 @@ def make_forum_post():
                 db.session.add(new_post)
                 db.session.commit()
         else:
-            flash('Content blocked: Violates usage policies. (Reload Page!)')
-            print("error")
-            return redirect(url_for('make_forum_post'))
+            error_message = "Content blocked: Violates usage policies"
+            return render_template('forum_post.html', error = True, error_message = error_message)
 
         return redirect(url_for('forum')) # set variable 
 
@@ -188,7 +188,7 @@ def make_forum_post():
         return redirect(url_for('login'))
 
     else:
-        return render_template('forum_post.html')
+        return render_template('forum_post.html', error = False)
 
 
 @app.route('/blog/')
@@ -227,6 +227,8 @@ def upvote():
     db.session.commit()
     print(post.likes)
     return make_response(jsonify({"success": "true", "post":post.serialize()}), 400)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
