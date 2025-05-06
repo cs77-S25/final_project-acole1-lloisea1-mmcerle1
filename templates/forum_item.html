@@ -23,7 +23,7 @@
         {% if session['user_id'] %}
             <p>Leave a comment here!</p>
         {% else %}
-            <p>No comments</p>
+            <p>Login to leave a comment</p>
         {% endif %}
 
         <div id = "comments" class="comments">
@@ -50,6 +50,7 @@
     let id = "{{ post.id }}"
 </script>
 <script src="{{ url_for('static', filename='js/forum_item.js') }}" defer></script>
+
 
 
 {% endblock %}
