@@ -12,6 +12,10 @@ Login
 <br><br>
 <div class ="login-register">
 <form action="{{ url_for('login') }}" method="post">
+    {% if error %}
+
+    <p> {{ error_message }}</p>
+    {% endif %}
     <div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
